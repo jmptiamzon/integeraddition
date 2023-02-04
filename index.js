@@ -44,7 +44,7 @@ function submitAnswer() {
 
     if (submittedAnswer == total) {
         score++
-        document.getElementById('answerField').value = "Correct answer is: " + total;
+        document.getElementById('answerField').value = "Answer: " + total;
         document.getElementById('answerField').setAttribute('disabled', true);
     } else {
         document.getElementById('answerField').value = "Correct answer is: " + total;
