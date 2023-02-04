@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="card text-center" style="margin-top: 20vh;">
+        <div class="card text-center" style="margin-top: 30vh;">
             <div class="card-body">
               <h2 class="card-text">
                 <span id = "addends1" style="display: none;"></span>
@@ -27,11 +27,13 @@
 
               <br>
 
+              <p id="correctText" style="display: none;"></p>
+
               <button type="button" class="btn btn-primary" onclick="startQuiz()" id="startButton">Start</button>
               <button type="button" class="btn btn-primary" onclick="submitAnswer()" id="submitButton" style="display: none;" disabled >Submit</button>
             </div>
             <div class="card-footer text-muted">
-              Score: <span id = "score">0</span>
+              Score: <span><b id="score">0</b></span>
             </div>
           </div>
     </div>

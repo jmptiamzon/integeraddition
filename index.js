@@ -18,6 +18,7 @@ function startQuiz() {
         document.getElementById('operation').style.display = 'inline';
         document.getElementById('horizontalLine').style.display = 'block';
         document.getElementById('answerField').style.display = 'inline';
+        document.getElementById('answerField').style.textAlign = 'center';
     }
 
     while (true) {
@@ -37,6 +38,8 @@ function startQuiz() {
 
 function submitAnswer() {
     document.getElementById('submitButton').setAttribute('disabled', true);
+    document.getElementById('correctText').style.display = 'block';
+    document.getElementById('correctText').style.fontWeight = 'bold';
     document.getElementById('startButton').removeAttribute('disabled');
 
     let submittedAnswer = document.getElementById('answerField').value;
@@ -44,10 +47,12 @@ function submitAnswer() {
 
     if (submittedAnswer == total) {
         score++
-        document.getElementById('answerField').value = "Answer: " + total;
+        document.getElementById('answerField').value = submittedAnswer;
+        document.getElementById('correctText').textContent = 'Correct answer: ' + total;
         document.getElementById('answerField').setAttribute('disabled', true);
     } else {
-        document.getElementById('answerField').value = "Answer: " + total;
+        document.getElementById('answerField').value = submittedAnswer;
+        document.getElementById('correctText').textContent = 'Correct answer: ' + total;
         document.getElementById('answerField').setAttribute('disabled', true);
     }
 
