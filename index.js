@@ -29,6 +29,11 @@ var score = 0;
 var addends1 = 0;
 var addends2 = 0;
 var total = 0;
+var fullname = "";
+var section = "";
+
+document.getElementById('startButton').addEventListener('click', startQuiz);
+document.getElementById('submitButton').addEventListener('click', submitAnswer);
 
 function startQuiz() {
     document.getElementById('answerField').removeAttribute('disabled');
@@ -45,6 +50,10 @@ function startQuiz() {
         document.getElementById('horizontalLine').style.display = 'block';
         document.getElementById('answerField').style.display = 'inline';
         document.getElementById('answerField').style.textAlign = 'center';
+        document.getElementById('fullname').style.display = 'none';
+        document.getElementById('section').style.display = 'none';
+        fullname = document.getElementById('fullname').value;
+        section = document.getElementById('section').value;
     }
 
     while (true) {
@@ -89,7 +98,7 @@ function submitAnswer() {
         document.getElementById('startButton').setAttribute('disabled', true);
         document.getElementById('answerField').setAttribute('disabled', true);
         document.getElementById('startButton').setAttribute('disabled', true);
-
+        
         insertDB();
 
         Swal.fire({
@@ -115,13 +124,15 @@ function submitAnswer() {
     }
 }
 
-function insertDB(name, section, score) {
-    set(ref(db, "Students/" + name), {
+function insertDB() {
+    set(ref(db, "Students/" + fullname), {
         Section: section,
         Score: score
     })
+    .then(() => {
+        console.log("successfully submitted");
+    })
     .catch((error) => {
-        alert("yes");
         console.log("not inserted" + error);
     });
 }
