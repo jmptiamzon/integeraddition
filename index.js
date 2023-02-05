@@ -1,3 +1,29 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyBEX8Ltm25R5UcxLa2_R_yGzo-m76J-kFQ",
+    authDomain: "integeradd-cnhs.firebaseapp.com",
+    databaseURL: "https://integeradd-cnhs-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "integeradd-cnhs",
+    storageBucket: "integeradd-cnhs.appspot.com",
+    messagingSenderId: "386856580338",
+    appId: "1:386856580338:web:b7e7aa606bc2df78850c6b",
+    measurementId: "G-T63N9ZFZ1P"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+import {getDatabase, set, ref} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+var db = getDatabase();
 var tries = 0;
 var score = 0;
 var addends1 = 0;
@@ -64,6 +90,8 @@ function submitAnswer() {
         document.getElementById('answerField').setAttribute('disabled', true);
         document.getElementById('startButton').setAttribute('disabled', true);
 
+        insertDB();
+
         Swal.fire({
             title: 'Do you want to try again?',
             text: 'Your score is ' + score,
@@ -85,4 +113,15 @@ function submitAnswer() {
             }
           });
     }
+}
+
+function insertDB(name, section, score) {
+    set(ref(db, "Students/" + name), {
+        Section: section,
+        Score: score
+    })
+    .catch((error) => {
+        alert("yes");
+        console.log("not inserted" + error);
+    });
 }
