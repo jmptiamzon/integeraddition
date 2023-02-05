@@ -65,7 +65,7 @@
         import {getDatabase, set, ref} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
         const db = getDatabase();
         
-        document.getDocumentById("insertBtn").addEventListener("click", insertDB);
+        document.getElementById("insertBtn").addEventListener("click", insertDB);
         
         function insertDB() {
             set(ref(db, "Students/" + "G1"), {
