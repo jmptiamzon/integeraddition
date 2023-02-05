@@ -94,7 +94,7 @@ function submitAnswer() {
     tries++;
     document.getElementById('score').textContent = score;
 
-    if (tries == 5) {
+    if (tries == 10) {
         document.getElementById('startButton').setAttribute('disabled', true);
         document.getElementById('answerField').setAttribute('disabled', true);
         document.getElementById('startButton').setAttribute('disabled', true);
