@@ -56,17 +56,9 @@ function startQuiz() {
         section = document.getElementById('section').value;
     }
 
-    while (true) {
-        addends1 = Math.floor(Math.random() * (10 + 10)) - 10;
-        addends2 = Math.floor(Math.random() * (10 + 10)) - 10;
-
-        if (addends1 == 0 || addends2 == 0) {
-            continue;
-        } else {
-            break;
-        }
-    }
-
+    addends1 = Math.floor(Math.random() * (10 + 10)) - 10;
+    addends2 = Math.floor(Math.random() * (10 + 10)) - 10;
+    
     document.getElementById('addends1').textContent = addends1 < 0 ? addends1 : "+" + addends1;
     document.getElementById('addends2').textContent = addends2 < 0 ? addends2 : "+" + addends2;
 }
