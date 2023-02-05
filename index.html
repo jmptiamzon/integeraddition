@@ -30,7 +30,7 @@
               <p id="correctText" style="display: none;"></p>
 
               <button type="button" class="btn btn-primary" onclick="startQuiz()" id="startButton">Start</button>
-              <button type="button" class="btn btn-primary" onclick="insertDB()">Insert</button>
+              <button type="button" class="btn btn-primary" id="insertBtn">Insert</button>
               <button type="button" class="btn btn-primary" onclick="submitAnswer()" id="submitButton" style="display: none;" disabled >Submit</button>
             </div>
             <div class="card-footer text-muted">
@@ -64,6 +64,8 @@
 
         import {getDatabase, set, ref} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
         const db = getDatabase();
+        
+        document.getDocumentById("insertBtn").addEventListener("click", insertDB);
         
         function insertDB() {
             set(ref(db, "Students/" + "G1"), {
