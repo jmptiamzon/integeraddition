@@ -64,19 +64,6 @@ function submitAnswer() {
         document.getElementById('answerField').setAttribute('disabled', true);
         document.getElementById('startButton').setAttribute('disabled', true);
 
-        set(ref(db, "Students/" + "G1"), {
-            StudentName: "yes",
-            Section: "yes1",
-            Score: 1
-        })
-        .then(()=>{
-          alert("asd");
-        })
-        .catch((error) => {
-            alert("yes");
-            console.log("not inserted" + error);
-        });
-
         Swal.fire({
             title: 'Do you want to try again?',
             text: 'Your score is ' + score,
