@@ -24,7 +24,7 @@ const analytics = getAnalytics(app);
 import {getDatabase, set, ref} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
 var db = getDatabase();
-var tries = 0;
+var tries = 1;
 var score = 0;
 var addends1 = 0;
 var addends2 = 0;
@@ -41,8 +41,8 @@ function startQuiz() {
     document.getElementById('submitButton').removeAttribute('disabled');
     document.getElementById('startButton').setAttribute('disabled', true);
 
-    if (tries == 0) {   
-        document.getElementById('questionNo').textContent = '#' + tries + 1;
+    if (tries == 1) {   
+        document.getElementById('questionNo').textContent = '#' + tries;
         document.getElementById('startButton').innerText = 'Next Question';
         document.getElementById('submitButton').style.display = 'inline';
         document.getElementById('addends1').style.display = 'inline';
@@ -69,7 +69,7 @@ function submitAnswer() {
     document.getElementById('correctText').style.display = 'block';
     document.getElementById('correctText').style.fontWeight = 'bold';
     document.getElementById('startButton').removeAttribute('disabled');
-    document.getElementById('questionNo').textContent = '#' + tries + 1;
+    document.getElementById('questionNo').textContent = '#' + tries;
 
     let submittedAnswer = document.getElementById('answerField').value;
     total = addends1 + addends2;
@@ -88,7 +88,7 @@ function submitAnswer() {
     tries++;
     document.getElementById('score').textContent = score + '/10';
 
-    if (tries == 10) {
+    if (tries == 11) {
         document.getElementById('startButton').setAttribute('disabled', true);
         document.getElementById('answerField').setAttribute('disabled', true);
         document.getElementById('startButton').setAttribute('disabled', true);
@@ -107,7 +107,7 @@ function submitAnswer() {
             allowOutsideClick: false
           }).then((result) => {
             if (result.isConfirmed) {
-                tries = 0;
+                tries = 1;
                 score = 0;
                 addends1 = 0;
                 addends2 = 0;
