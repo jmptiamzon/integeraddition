@@ -41,7 +41,8 @@ function startQuiz() {
     document.getElementById('submitButton').removeAttribute('disabled');
     document.getElementById('startButton').setAttribute('disabled', true);
 
-    if (tries == 0) {
+    if (tries == 0) {   
+        document.getElementById('questionNo').textContent = '#' + tries + 1;
         document.getElementById('startButton').innerText = 'Next Question';
         document.getElementById('submitButton').style.display = 'inline';
         document.getElementById('addends1').style.display = 'inline';
@@ -68,6 +69,7 @@ function submitAnswer() {
     document.getElementById('correctText').style.display = 'block';
     document.getElementById('correctText').style.fontWeight = 'bold';
     document.getElementById('startButton').removeAttribute('disabled');
+    document.getElementById('questionNo').textContent = '#' + tries + 1;
 
     let submittedAnswer = document.getElementById('answerField').value;
     total = addends1 + addends2;
@@ -84,7 +86,7 @@ function submitAnswer() {
     }
 
     tries++;
-    document.getElementById('score').textContent = score;
+    document.getElementById('score').textContent = score + '/10';
 
     if (tries == 10) {
         document.getElementById('startButton').setAttribute('disabled', true);
@@ -95,7 +97,7 @@ function submitAnswer() {
 
         Swal.fire({
             title: 'Do you want to try again?',
-            text: 'Your score is ' + score,
+            text: 'Your score is ' + score + '/10',
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
