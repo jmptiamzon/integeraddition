@@ -1,2 +1,2 @@
 # Integer Question Randomizer
-This question randomizer is for cupang national high school, PH.
+This question randomizer is for Cupang National High School, PH.
